@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtuzone Business Setup Cost Calculator</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="top-nav">
+        <div class="logo">
+            <img src="./assets/al-aseel-logo.png" alt="Virtuzone Logo">
+        </div>
+    </header>
+    <!-- Logo -->
+
+
+    <!-- Chat Widget -->
+    <!-- <div class="chat-widget" onclick="openChat()">
+        <img src="chat-icon.svg" alt="Chat" class="chat-icon">
+        Got Questions? Let's Chat!
+    </div> -->
+
+    <!-- Main Container -->
+    <div class="banner-container">
+        <div class="left-section">
+            <h1>How Much Does It Cost to Start a Business in Dubai or the UAE?
+            </h1>
+            <p>Business setup costs can vary depending on the type of business you want to start.</p>
+        </div>
+        <div class="container-wrapper">
+            <div class="container">
+                <!-- Header -->
+                <div class="header">
+                    <h1>Business Setup Cost Calculator</h1>
+                    <p>Calculate your company formation costs in Dubai & UAE</p>
+                </div>
+
+                <!-- Form Content -->
+                <div class="form-content">
+                    <!-- Step 1: Business Activity -->
+                    <div class="step active" id="step1">
+                        <h3>What is your business activity?</h3>
+                        <div class="form-group">
+                            <label for="businessActivity">Select your primary business activity:</label>
+                            <select id="businessActivity" required>
+                                <option value="">Choose your business activity...</option>
+                                <option value="consulting">Consulting</option>
+                                <option value="technology">Technology</option>
+                                <option value="food-beverage">Food and Beverage</option>
+                                <option value="retail">Retail</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="recreation">Recreation</option>
+                                <option value="publishing">Publishing</option>
+                                <option value="environmental">Environmental</option>
+                                <option value="biotechnology">Biotechnology</option>
+                                <option value="non-profit">Not For Profit</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="web3-crypto">Web3/Crypto</option>
+                                <option value="government">Government</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="shipping">Shipping</option>
+                                <option value="agriculture">Agriculture</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="recruitment">Recruitment</option>
+                                <option value="chemicals">Chemicals</option>
+                                <option value="sports-management">Sports Management Services</option>
+                                <option value="machinery">Machinery</option>
+                                <option value="communications">Communications</option>
+                                <option value="energy">Energy</option>
+                                <option value="business-accelerator">Business Accelerator</option>
+                                <option value="banking">Banking</option>
+                                <option value="telecommunications">Telecommunications</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="private-equity">Private Equity</option>
+                                <option value="venture-capital">Venture Capital</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message">Please select your business activity.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Business Location -->
+                    <div class="step" id="step2">
+                        <h3>Where do you want to setup your business?</h3>
+                        <div class="form-group">
+                            <label>Select your preferred business location:</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="freeZone" name="businessLocation" value="free-zone"
+                                        required>
+                                    <label for="freeZone">Free Zone</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="mainland" name="businessLocation" value="mainland" required>
+                                    <label for="mainland">Mainland</label>
+                                </div>
+                            </div>
+                            <div class="error-message">Please select a business location.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: License Type -->
+                    <div class="step" id="step3">
+                        <h3>What type of license do you need?</h3>
+                        <div class="form-group">
+                            <label for="licenseType">Select your license type:</label>
+                            <select id="licenseType" required>
+                                <option value="">Choose your license type...</option>
+                                <option value="free-zone-license">Free Zone License</option>
+                                <option value="mainland-license">Mainland License</option>
+                                <option value="ecommerce-license">E-commerce License</option>
+                                <option value="professional-license">Professional License</option>
+                            </select>
+                            <div class="error-message">Please select a license type.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Number of Shareholders -->
+                    <div class="step" id="step4">
+                        <h3>How many shareholders will your company have?</h3>
+                        <div class="form-group">
+                            <label for="shareholders">Number of shareholders:</label>
+                            <input type="number" id="shareholders" min="1" max="50" required>
+                            <div class="error-message">Please enter the number of shareholders (minimum 1).</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Employee Visas -->
+                    <div class="step" id="step5">
+                        <h3>How many employee visas do you need?</h3>
+                        <div class="form-group">
+                            <label for="employeeVisas">Number of employee visas:</label>
+                            <input type="number" id="employeeVisas" min="0" max="100" required>
+                            <div class="error-message">Please enter the number of employee visas.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Investor Visas -->
+                    <div class="step" id="step6">
+                        <h3>How many investor visas do you need?</h3>
+                        <div class="form-group">
+                            <label for="investorVisas">Number of investor visas:</label>
+                            <input type="number" id="investorVisas" min="0" max="20" required>
+                            <div class="error-message">Please enter the number of investor visas.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Office Space -->
+                    <div class="step" id="step7">
+                        <h3>What type of office space do you need?</h3>
+                        <div class="form-group">
+                            <label>Select your office space preference:</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="noOffice" name="officeSpace" value="none" required>
+                                    <label for="noOffice">None</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="flexiDesk" name="officeSpace" value="flexi-desk" required>
+                                    <label for="flexiDesk">Flexi Desk</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="dedicatedOffice" name="officeSpace" value="dedicated-office"
+                                        required>
+                                    <label for="dedicatedOffice">Dedicated Office</label>
+                                </div>
+                            </div>
+                            <div class="error-message">Please select an office space option.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 8: Trade Name -->
+                    <div class="step" id="step8">
+                        <h3>What will be your company's trade name?</h3>
+                        <div class="form-group">
+                            <label for="tradeName">Trade name:</label>
+                            <input type="text" id="tradeName" placeholder="Enter your company's trade name" required>
+                            <div class="error-message">Please enter your trade name.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 9: Business Scale -->
+                    <div class="step" id="step9">
+                        <h3>What is the scale of your business?</h3>
+                        <div class="form-group">
+                            <label>Select your business scale:</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="smallScale" name="businessScale" value="small" required>
+                                    <label for="smallScale">Small</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="mediumScale" name="businessScale" value="medium" required>
+                                    <label for="mediumScale">Medium</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="largeScale" name="businessScale" value="large" required>
+                                    <label for="largeScale">Large</label>
+                                </div>
+                            </div>
+                            <div class="error-message">Please select your business scale.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 10: Additional Services -->
+                    <div class="step" id="step10">
+                        <h3>Do you need any additional services?</h3>
+                        <div class="form-group">
+                            <label>Select additional services:</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="bankAccount" name="additionalServices"
+                                        value="bank-account">
+                                    <label for="bankAccount">Bank Account Setup</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="accounting" name="additionalServices" value="accounting">
+                                    <label for="accounting">Accounting Services</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="trademark" name="additionalServices" value="trademark">
+                                    <label for="trademark">Trademark Registration</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 11: Expected Annual Revenue -->
+                    <div class="step" id="step11">
+                        <h3>What is your expected annual revenue?</h3>
+                        <div class="form-group">
+                            <label for="annualRevenue">Expected annual revenue (AED):</label>
+                            <input type="number" id="annualRevenue" min="0" placeholder="Enter amount in AED" required>
+                            <div class="error-message">Please enter your expected annual revenue.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 12: Contact Email -->
+                    <div class="step" id="step12">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="name" id="name" placeholder="Enter your name" required>
+                            <div class="error-message">Please enter your name.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email address:</label>
+                            <input type="email" id="contactEmail" placeholder="Enter your email address" required>
+                            <div class="error-message">Please enter a valid email address.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone number:</label>
+                            <input type="tel" id="contactPhone" placeholder="Enter your phone number" required>
+                            <div class="error-message">Please enter your phone number.</div>
+                        </div>
+                    </div>
+
+                    <div class="step" id="step13"
+                        style="justify-content: center;align-items: center;gap: 0.5rem;flex-direction: column;">
+                        <h3 class="" style="color: green;">Thanks for your submission</h3>
+                        <p>We will review you request and reach you soon</p>
+                    </div>
+                    <!-- Step 14: Review & Submit -->
+                    <div class="step" id="step14">
+                        <h3>Review Your Information & Estimated Cost</h3>
+                        <div class="summary-section">
+                            <h4 style="margin-bottom: 15px; color: #333;">Business Setup Summary</h4>
+                            <div id="summaryContent"></div>
+                        </div>
+                        <div class="cost-breakdown">
+                            <h4 style="margin-bottom: 15px; color: #f44336;">Cost Breakdown</h4>
+                            <div id="costBreakdown"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)"
+                        disabled>Previous</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">Next</button>
+                    <button type="button" class="btn btn-success" id="submitBtn" onclick="submitForm()"
+                        style="display: none;">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Al Aseel &copy; 2025 all rights reserved</p>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 12;
+        const formData = {};
+
+        function changeStep(direction) {
+            console.log(formData)
+            if (direction === 1) {
+                // Validate current step before proceeding
+                if (!validateStep(currentStep)) {
+                    return;
+                }
+                // Save current step data
+                saveStepData(currentStep);
+            }
+
+            const newStep = currentStep + direction;
+
+            if (newStep >= 1 && newStep <= totalSteps) {
+                // Hide current step
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+
+                // Update step number
+                currentStep = newStep;
+
+                // Show new step
+                document.getElementById(`step${currentStep}`).classList.add('active');
+
+                // Update navigation buttons
+                updateNavigation();
+
+                // If it's the last step, populate summary
+                if (currentStep === totalSteps) {
+                    populateSummary();
+                }
+            }
+        }
+
+        function validateStep(step) {
+            const stepElement = document.getElementById(`step${step}`);
+            const requiredInputs = stepElement.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                const formGroup = input.closest('.form-group');
+                formGroup.classList.remove('error');
+
+                if (input.type === 'radio') {
+                    const radioGroup = stepElement.querySelectorAll(`[name="${input.name}"]`);
+                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                    if (!isChecked) {
+                        formGroup.classList.add('error');
+                        isValid = false;
+                    }
+                } else if (input.type === 'checkbox') {
+                    // Checkboxes are optional in step 10
+                    return;
+                } else if (!input.value.trim()) {
+                    formGroup.classList.add('error');
+                    isValid = false;
+                } else if (input.type === 'email' && !isValidEmail(input.value)) {
+                    formGroup.classList.add('error');
+                    isValid = false;
+                } else if (input.type === 'number' && (isNaN(input.value) || input.value < 0)) {
+                    formGroup.classList.add('error');
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function saveStepData(step) {
+            const stepElement = document.getElementById(`step${step}`);
+            const inputs = stepElement.querySelectorAll('input, select');
+
+            inputs.forEach(input => {
+                if (input.type === 'radio' && input.checked) {
+                    formData[input.name] = input.value;
+                } else if (input.type === 'checkbox') {
+                    if (!formData.additionalServices) formData.additionalServices = [];
+                    if (input.checked && !formData.additionalServices.includes(input.value)) {
+                        formData.additionalServices.push(input.value);
+                    } else if (!input.checked) {
+                        formData.additionalServices = formData.additionalServices.filter(service => service !== input.value);
+                    }
+                } else if (input.type !== 'radio' && input.value) {
+                    formData[input.id] = input.value;
+                }
+            });
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            prevBtn.disabled = currentStep === 1;
+
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            }
+        }
+
+        function populateSummary() {
+            // Ensure all data is saved
+            for (let i = 1; i < totalSteps; i++) {
+                saveStepData(i);
+            }
+
+            const summaryContent = document.getElementById('summaryContent');
+            const costBreakdown = document.getElementById('costBreakdown');
+
+            // Create summary HTML
+            const summary = `
+                <div class="summary-item"><span>Business Activity:</span><span>${getDisplayValue('businessActivity')}</span></div>
+                <div class="summary-item"><span>Business Location:</span><span>${getDisplayValue('businessLocation')}</span></div>
+                <div class="summary-item"><span>License Type:</span><span>${getDisplayValue('licenseType')}</span></div>
+                <div class="summary-item"><span>Number of Shareholders:</span><span>${formData.shareholders || 'Not specified'}</span></div>
+                <div class="summary-item"><span>Employee Visas:</span><span>${formData.employeeVisas || '0'}</span></div>
+                <div class="summary-item"><span>Investor Visas:</span><span>${formData.investorVisas || '0'}</span></div>
+                <div class="summary-item"><span>Office Space:</span><span>${getDisplayValue('officeSpace')}</span></div>
+                <div class="summary-item"><span>Trade Name:</span><span>${formData.tradeName || 'Not specified'}</span></div>
+                <div class="summary-item"><span>Business Scale:</span><span>${getDisplayValue('businessScale')}</span></div>
+                <div class="summary-item"><span>Additional Services:</span><span>${formData.additionalServices && formData.additionalServices.length > 0 ? formData.additionalServices.join(', ') : 'None'}</span></div>
+                <div class="summary-item"><span>Expected Annual Revenue:</span><span>AED ${formData.annualRevenue ? parseInt(formData.annualRevenue).toLocaleString() : 'Not specified'}</span></div>
+                <div class="summary-item"><span>Contact Email:</span><span>${formData.contactEmail || 'Not specified'}</span></div>
+                <div class="summary-item"><span>Contact Phone:</span><span>${formData.contactPhone || 'Not specified'}</span></div>
+            `;
+
+            summaryContent.innerHTML = summary;
+
+            // Calculate costs
+            const costs = calculateCosts();
+            const costHtml = `
+                <div class="summary-item"><span>Base Setup Cost:</span><span>AED ${costs.base.toLocaleString()}</span></div>
+                <div class="summary-item"><span>Employee Visa Fees:</span><span>AED ${costs.employeeVisas.toLocaleString()}</span></div>
+                <div class="summary-item"><span>Investor Visa Fees:</span><span>AED ${costs.investorVisas.toLocaleString()}</span></div>
+                <div class="summary-item"><span>Office Space:</span><span>AED ${costs.office.toLocaleString()}</span></div>
+                <div class="summary-item"><span>Additional Services:</span><span>AED ${costs.services.toLocaleString()}</span></div>
+                <div class="summary-item"><span><strong>Total Estimated Cost:</strong></span><span><strong>AED ${costs.total.toLocaleString()}</strong></span></div>
+            `;
+
+            costBreakdown.innerHTML = costHtml;
+        }
+
+        function getDisplayValue(key) {
+            const value = formData[key];
+            if (!value) return 'Not specified';
+
+            // Convert values to display-friendly format
+            const displayMap = {
+                'free-zone': 'Free Zone',
+                'mainland': 'Mainland',
+                'free-zone-license': 'Free Zone License',
+                'mainland-license': 'Mainland License',
+                'ecommerce-license': 'E-commerce License',
+                'professional-license': 'Professional License',
+                'none': 'None',
+                'flexi-desk': 'Flexi Desk',
+                'dedicated-office': 'Dedicated Office',
+                'small': 'Small',
+                'medium': 'Medium',
+                'large': 'Large'
+            };
+
+            return displayMap[value] || value.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        function calculateCosts() {
+            const costs = {
+                base: 0,
+                employeeVisas: 0,
+                investorVisas: 0,
+                office: 0,
+                services: 0,
+                total: 0
+            };
+
+            // Base cost by location
+            if (formData.businessLocation === 'free-zone') {
+                costs.base = 15000;
+            } else if (formData.businessLocation === 'mainland') {
+                costs.base = 20000;
+            }
+
+            // Visa costs
+            const employeeVisas = parseInt(formData.employeeVisas) || 0;
+            const investorVisas = parseInt(formData.investorVisas) || 0;
+            costs.employeeVisas = employeeVisas * 5000;
+            costs.investorVisas = investorVisas * 7000;
+
+            // Office space costs
+            if (formData.officeSpace === 'flexi-desk') {
+                costs.office = 8000;
+            } else if (formData.officeSpace === 'dedicated-office') {
+                costs.office = 25000;
+            }
+
+            // Additional services
+            if (formData.additionalServices && formData.additionalServices.length > 0) {
+                formData.additionalServices.forEach(service => {
+                    switch (service) {
+                        case 'bank-account':
+                            costs.services += 3000;
+                            break;
+                        case 'accounting':
+                            costs.services += 12000;
+                            break;
+                        case 'trademark':
+                            costs.services += 5000;
+                            break;
+                    }
+                });
+            }
+
+            costs.total = costs.base + costs.employeeVisas + costs.investorVisas + costs.office + costs.services;
+            return costs;
+        }
+
+        function submitForm() {
+            console.log('Form Data:', formData);
+            document.getElementById(`step12`).classList.remove('active');
+            document.getElementById(`step13`).classList.add('active');
+            document.querySelector('.navigation').style.display = 'none';
+            window.location.href = generateWhatsAppLink(formData)
+        }
+
+        function generateWhatsAppLink(data) {
+            const phoneNumber = "918089626456"; // Your WhatsApp number
+
+            const message =
+                `Hello, I would like to know how much it will cost to start a business in Dubai/UAE.
+Here are my details:
+
+• Business Activity: ${data.businessActivity}
+• Business Location: ${data.businessLocation}
+• License Type: ${data.licenseType}
+• Number of Shareholders: ${data.shareholders}
+• Number of Employee Visas: ${data.employeeVisas}
+• Number of Investor Visas: ${data.investorVisas}
+• Office Space Requirement: ${data.officeSpace}
+• Trade Name Preference: ${data.tradeName}
+• Business Scale: ${data.businessScale}
+• Additional Services: ${data.additionalServices.join(", ")}
+• Annual Revenue: ${data.annualRevenue}
+
+Kindly provide me with the estimated cost and further steps.`;
+
+            // Encode for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+
+            return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        }
+
+
+        function openChat() {
+            alert('Chat feature coming soon! For immediate assistance, please call +971 4 336 5444 or email info@virtuzone.com');
+        }
+
+        // Add event listeners for real-time validation
+        document.addEventListener('input', function (e) {
+            if (e.target.hasAttribute('required')) {
+                const formGroup = e.target.closest('.form-group');
+                if (formGroup && formGroup.classList.contains('error')) {
+                    if (e.target.value.trim() || (e.target.type === 'radio' && e.target.checked)) {
+                        formGroup.classList.remove('error');
+                    }
+                }
+            }
+        });
+
+        // Handle radio button changes
+        document.addEventListener('change', function (e) {
+            if (e.target.type === 'radio') {
+                const formGroup = e.target.closest('.form-group');
+                if (formGroup && formGroup.classList.contains('error')) {
+                    formGroup.classList.remove('error');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
