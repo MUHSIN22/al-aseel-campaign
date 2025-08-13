@@ -73,7 +73,7 @@ body {
 .banner-container {
   width: 100%;
   min-height: 100vh;
-  background: url("/assets/banner image.jpg");
+  background: url("./assets/banner image.jpg");
   display: flex;
   justify-content: space-between;
   padding: 1rem;
