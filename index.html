@@ -254,17 +254,19 @@
                     <div class="step" id="step11">
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="name" id="name" placeholder="Enter your name" required>
+                            <input type="name" id="name" name="name" placeholder="Enter your name" required>
                             <div class="error-message">Please enter your name.</div>
                         </div>
                         <div class="form-group">
                             <label for="contactEmail">Email address:</label>
-                            <input type="email" id="contactEmail" placeholder="Enter your email address" required>
+                            <input type="email" name="email" id="contactEmail" placeholder="Enter your email address"
+                                required>
                             <div class="error-message">Please enter a valid email address.</div>
                         </div>
                         <div class="form-group">
                             <label for="contactPhone">Phone number:</label>
-                            <input type="tel" id="contactPhone" placeholder="Enter your phone number" required>
+                            <input type="tel" name="phone" id="contactPhone" placeholder="Enter your phone number"
+                                required>
                             <div class="error-message">Please enter your phone number.</div>
                         </div>
                     </div>
@@ -311,11 +313,10 @@
         const formData = {};
 
         function changeStep(direction) {
-            console.log(formData)
             if (direction === 1) {
                 // Validate current step before proceeding
                 if (!validateStep(currentStep)) {
-                    return;
+                    return false;
                 }
                 // Save current step data
                 saveStepData(currentStep);
@@ -550,37 +551,40 @@
         }
 
         async function submitForm() {
-            const sheetURL = "https://script.google.com/macros/s/AKfycby-9SiExScs8C0-2v1ivGTeHp7o9GXWkL-0xQzyJ0v-ojxXAPQpxRYmrfX0Bqx1uwSD/exec"
-            const result = await fetch(sheetURL, {
-                method: "POST",
-                body: JSON.stringify(formData)
-            })
-            const resultJson = result.json()
-            console.log('Form Data:', resultJson, formData);
-            // document.getElementById(`step12`).classList.remove('active');
-            // document.getElementById(`step13`).classList.add('active');
-            // document.querySelector('.navigation').style.display = 'none';
-            // window.location.href = generateWhatsAppLink(formData)
+            const changeStatus = changeStep(1);
+            if (changeStatus !== false) {
+                document.getElementById(`step11`).classList.remove('active');
+                document.getElementById(`step12`).classList.add('active');
+                document.querySelector('.navigation').style.display = 'none';
+                generateWhatsAppLink(formData)
+                window.location.href = generateWhatsAppLink(formData)
+            }
+
 
         }
 
         function generateWhatsAppLink(data) {
+            console.log(data, 'data')
             const phoneNumber = "971568879220"; // Your WhatsApp number
 
             const message =
                 `Hello, I would like to know how much it will cost to start a business in Dubai/UAE.
 Here are my details:
 
-• Business Activity: ${data.businessActivity}
-• Business Location: ${data.businessLocation}
-• License Type: ${data.licenseType}
+• Name: ${data.name}
+• Email: ${data.contactEmail}
+• Phone: ${data.contactPhone}
+• Business Activity: ${(data.businessActivity)}
+${data.otherBusinessActivity ? `• Other Business Activity: ${data.otherBusinessActivity}` : ''}
+• Business Location: ${(data.officeSpace)}
+• License Type: ${(data.licenseType)}
 • Number of Shareholders: ${data.shareholders}
 • Number of Employee Visas: ${data.employeeVisas}
 • Number of Investor Visas: ${data.investorVisas}
-• Office Space Requirement: ${data.officeSpace}
+• Office Space Requirement: ${(data.officeSpace)}
 • Trade Name Preference: ${data.tradeName}
-• Business Scale: ${data.businessScale}
-• Additional Services: ${data.additionalServices.join(", ")}
+• Business Scale: ${(data.businessScale)}
+• Additional Services: ${data.additionalServices.map(item => (item)).join(", ")}
 • Annual Revenue: ${data.annualRevenue}
 
 Kindly provide me with the estimated cost and further steps.`;
