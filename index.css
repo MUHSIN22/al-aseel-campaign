@@ -83,7 +83,9 @@ body {
   background-size: cover;
   justify-content: center;
 }
-
+#otherBusinessActivity {
+  display: none;
+}
 .left-section {
   color: white;
   display: flex;

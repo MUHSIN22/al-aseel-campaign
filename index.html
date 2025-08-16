@@ -51,7 +51,7 @@
                         <h3>What is your business activity?</h3>
                         <div class="form-group">
                             <label for="businessActivity">Select your primary business activity:</label>
-                            <select id="businessActivity" required>
+                            <select id="businessActivity" required onchange="handleBusinessActivityChange()">
                                 <option value="">Choose your business activity...</option>
                                 <option value="consulting">Consulting</option>
                                 <option value="technology">Technology</option>
@@ -86,12 +86,18 @@
                                 <option value="venture-capital">Venture Capital</option>
                                 <option value="other">Other</option>
                             </select>
+
                             <div class="error-message">Please select your business activity.</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="otherBusinessActivity" name="otherBusinessActivity"
+                                placeholder="Enter your business activity" required>
+                            <div class="error-message">Please enter your business activity.</div>
                         </div>
                     </div>
 
                     <!-- Step 2: Business Location -->
-                    <div class="step" id="step2">
+                    <!-- <div class="step" id="step">
                         <h3>Where do you want to setup your business?</h3>
                         <div class="form-group">
                             <label>Select your preferred business location:</label>
@@ -108,10 +114,10 @@
                             </div>
                             <div class="error-message">Please select a business location.</div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Step 3: License Type -->
-                    <div class="step" id="step3">
+                    <div class="step" id="step2">
                         <h3>What type of license do you need?</h3>
                         <div class="form-group">
                             <label for="licenseType">Select your license type:</label>
@@ -119,15 +125,13 @@
                                 <option value="">Choose your license type...</option>
                                 <option value="free-zone-license">Free Zone License</option>
                                 <option value="mainland-license">Mainland License</option>
-                                <option value="ecommerce-license">E-commerce License</option>
-                                <option value="professional-license">Professional License</option>
                             </select>
                             <div class="error-message">Please select a license type.</div>
                         </div>
                     </div>
 
                     <!-- Step 4: Number of Shareholders -->
-                    <div class="step" id="step4">
+                    <div class="step" id="step3">
                         <h3>How many shareholders will your company have?</h3>
                         <div class="form-group">
                             <label for="shareholders">Number of shareholders:</label>
@@ -137,7 +141,7 @@
                     </div>
 
                     <!-- Step 5: Employee Visas -->
-                    <div class="step" id="step5">
+                    <div class="step" id="step4">
                         <h3>How many employee visas do you need?</h3>
                         <div class="form-group">
                             <label for="employeeVisas">Number of employee visas:</label>
@@ -147,7 +151,7 @@
                     </div>
 
                     <!-- Step 6: Investor Visas -->
-                    <div class="step" id="step6">
+                    <div class="step" id="step5">
                         <h3>How many investor visas do you need?</h3>
                         <div class="form-group">
                             <label for="investorVisas">Number of investor visas:</label>
@@ -157,7 +161,7 @@
                     </div>
 
                     <!-- Step 7: Office Space -->
-                    <div class="step" id="step7">
+                    <div class="step" id="step6">
                         <h3>What type of office space do you need?</h3>
                         <div class="form-group">
                             <label>Select your office space preference:</label>
@@ -181,7 +185,7 @@
                     </div>
 
                     <!-- Step 8: Trade Name -->
-                    <div class="step" id="step8">
+                    <div class="step" id="step7">
                         <h3>What will be your company's trade name?</h3>
                         <div class="form-group">
                             <label for="tradeName">Trade name:</label>
@@ -191,7 +195,7 @@
                     </div>
 
                     <!-- Step 9: Business Scale -->
-                    <div class="step" id="step9">
+                    <div class="step" id="step8">
                         <h3>What is the scale of your business?</h3>
                         <div class="form-group">
                             <label>Select your business scale:</label>
@@ -214,7 +218,7 @@
                     </div>
 
                     <!-- Step 10: Additional Services -->
-                    <div class="step" id="step10">
+                    <div class="step" id="step9">
                         <h3>Do you need any additional services?</h3>
                         <div class="form-group">
                             <label>Select additional services:</label>
@@ -237,7 +241,7 @@
                     </div>
 
                     <!-- Step 11: Expected Annual Revenue -->
-                    <div class="step" id="step11">
+                    <div class="step" id="step10">
                         <h3>What is your expected annual revenue?</h3>
                         <div class="form-group">
                             <label for="annualRevenue">Expected annual revenue (AED):</label>
@@ -247,7 +251,7 @@
                     </div>
 
                     <!-- Step 12: Contact Email -->
-                    <div class="step" id="step12">
+                    <div class="step" id="step11">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="name" id="name" placeholder="Enter your name" required>
@@ -265,7 +269,7 @@
                         </div>
                     </div>
 
-                    <div class="step" id="step13"
+                    <div class="step" id="step12"
                         style="justify-content: center;align-items: center;gap: 0.5rem;flex-direction: column;">
                         <h3 class="" style="color: green;">Thanks for your submission</h3>
                         <p>We will review you request and reach you soon</p>
@@ -303,7 +307,7 @@
 
     <script>
         let currentStep = 1;
-        const totalSteps = 12;
+        const totalSteps = 11;
         const formData = {};
 
         function changeStep(direction) {
@@ -336,6 +340,16 @@
                 if (currentStep === totalSteps) {
                     populateSummary();
                 }
+            }
+        }
+
+        function handleBusinessActivityChange() {
+            const businessActivity = document.getElementById('businessActivity');
+            const otherBusinessActivity = document.getElementById('otherBusinessActivity');
+            if (businessActivity.value === "other") {
+                otherBusinessActivity.style.display = 'block';
+            } else {
+                otherBusinessActivity.style.display = 'none';
             }
         }
 
@@ -530,12 +544,19 @@
             return costs;
         }
 
-        function submitForm() {
-            console.log('Form Data:', formData);
-            document.getElementById(`step12`).classList.remove('active');
-            document.getElementById(`step13`).classList.add('active');
-            document.querySelector('.navigation').style.display = 'none';
-            window.location.href = generateWhatsAppLink(formData)
+        async function submitForm() {
+            const sheetURL = "https://script.google.com/macros/s/AKfycby-9SiExScs8C0-2v1ivGTeHp7o9GXWkL-0xQzyJ0v-ojxXAPQpxRYmrfX0Bqx1uwSD/exec"
+            const result = await fetch(sheetURL, {
+                method: "POST",
+                body: JSON.stringify(formData)
+            })
+            const resultJson = result.json()
+            console.log('Form Data:', resultJson, formData);
+            // document.getElementById(`step12`).classList.remove('active');
+            // document.getElementById(`step13`).classList.add('active');
+            // document.querySelector('.navigation').style.display = 'none';
+            // window.location.href = generateWhatsAppLink(formData)
+
         }
 
         function generateWhatsAppLink(data) {
