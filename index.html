@@ -359,6 +359,11 @@
             let isValid = true;
 
             requiredInputs.forEach(input => {
+                const style = window.getComputedStyle(input);
+                if (style.display === "none" || style.visibility === "hidden" || input.type === "hidden") {
+                    return; // skip this input
+                }
+
                 const formGroup = input.closest('.form-group');
                 formGroup.classList.remove('error');
 
